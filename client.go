@@ -230,7 +230,7 @@ func buildTLSConfig(cfg TLSConfig, logger Logger) (*tls.Config, error) {
 	const trace = "client.buildTLSConfig"
 	tlsConfig := &tls.Config{
 		MinVersion:         tls.VersionTLS12,
-		InsecureSkipVerify: cfg.InsecureSkipVerify,
+		InsecureSkipVerify: cfg.InsecureSkipVerify, //nolint:gosec // Intentional: user-controlled config for local development
 	}
 	if !cfg.Enabled {
 		logger.Info(fmt.Sprintf("(%s) TLS disabled", trace))

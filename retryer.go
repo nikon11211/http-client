@@ -17,7 +17,7 @@ type Retryer struct {
 }
 
 func NewRetryer(config RetryerConfig, logger Logger) *Retryer {
-	return newRetryer(config, logger, rand.New(rand.NewSource(time.Now().UnixNano())))
+	return newRetryer(config, logger, rand.New(rand.NewSource(time.Now().UnixNano()))) //nolint:gosec // Non-cryptographic jitter
 }
 
 func newRetryer(config RetryerConfig, logger Logger, rng *rand.Rand) *Retryer {
